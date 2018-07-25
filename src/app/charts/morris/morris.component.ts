@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-morris',
@@ -6,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./morris.component.css']
 })
 export class MorrisComponent implements OnInit {
-  constructor() {}
+  id: string;
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
+    this.id = this.route.snapshot.queryParams['id'];
+
     $(function() {
       Morris.Area({
         element: 'morris-area-chart',

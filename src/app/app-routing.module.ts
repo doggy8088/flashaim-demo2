@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'forms', component: FormsComponent },
   { path: 'charts',
     children: [
-      { path: 'flot', component: FlotComponent },
+      { path: 'flot/:id', component: FlotComponent },
       { path: 'morris', component: MorrisComponent }
     ]
   },
