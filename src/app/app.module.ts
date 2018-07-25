@@ -9,8 +9,6 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsComponent } from './forms/forms.component';
-import { FlotComponent } from './charts/flot/flot.component';
-import { MorrisComponent } from './charts/morris/morris.component';
 
 @NgModule({
   declarations: [
@@ -20,9 +18,7 @@ import { MorrisComponent } from './charts/morris/morris.component';
     HomeComponent,
     NotFoundComponent,
     DashboardComponent,
-    FormsComponent,
-    FlotComponent,
-    MorrisComponent
+    FormsComponent
   ],
   imports: [
     BrowserModule,
