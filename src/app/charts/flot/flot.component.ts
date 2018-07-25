@@ -11,7 +11,9 @@ export class FlotComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.id = this.route.snapshot.params['id'];
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+    });
 
     //Flot Line Chart
     $(document).ready(function() {
