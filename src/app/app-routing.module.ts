@@ -4,14 +4,18 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsComponent } from './forms/forms.component';
 import { LoginComponent } from './login/login.component';
+import { LayoutComponent } from './layout/layout.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
-  { path: 'forms', component: FormsComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'charts',
-    loadChildren: './charts/charts.module#ChartsModule'
-  },
+  { path: '', component: LayoutComponent,
+    children: [
+    { path: '', component: DashboardComponent },
+    { path: 'forms', component: FormsComponent },
+    { path: 'charts',
+      loadChildren: './charts/charts.module#ChartsModule'
+    }
+  ]},
   { path: '**', component: NotFoundComponent }
 ];
 
