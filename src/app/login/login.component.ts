@@ -8,6 +8,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  login: any = {};
+
   returnUrl: string;
 
   constructor(private route: ActivatedRoute, private router: Router) { }

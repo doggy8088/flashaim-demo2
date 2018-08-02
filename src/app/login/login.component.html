@@ -8,11 +8,13 @@
         <div class="panel-body">
           <form role="form">
             <fieldset>
-              <div class="form-group">
-                <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+              <div class="form-group" [class.has-error]="mEmail.invalid && mEmail.dirty">
+                <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus [(ngModel)]="login.email" required #mEmail="ngModel">
+                <div class="help-block" *ngIf="mEmail.invalid && mEmail.dirty">請輸入 Email 地址</div>
               </div>
-              <div class="form-group">
-                <input class="form-control" placeholder="Password" name="password" type="password" value="">
+              <div class="form-group" [class.has-error]="mPassword.invalid && mPassword.dirty">
+                <input class="form-control" placeholder="Password" name="password" type="password" [(ngModel)]="login.password" required minlength="3" #mPassword="ngModel">
+                <div class="help-block" *ngIf="mPassword.invalid && mPassword.dirty">請輸入 Password 密碼欄位</div>
               </div>
               <div class="checkbox">
                 <label>
@@ -23,6 +25,16 @@
               <a (click)="doLogin()" class="btn btn-lg btn-success btn-block">Login</a>
             </fieldset>
           </form>
+          <pre>{{login|json}}</pre>
+          <pre>mPassword.valid = {{mPassword.valid|json}}
+mPassword.invalid = {{mPassword.invalid|json}}
+mPassword.touched = {{mPassword.touched|json}}
+mPassword.untouched = {{mPassword.untouched|json}}
+mPassword.dirty = {{mPassword.dirty|json}}
+mPassword.pristine = {{mPassword.pristine|json}}
+mPassword.enabled = {{mPassword.enabled|json}}
+mPassword.disabled = {{mPassword.disabled|json}}
+mPassword.errors = {{mPassword.errors|json}}</pre>
         </div>
       </div>
     </div>
