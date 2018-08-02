@@ -15,10 +15,11 @@ export class FormsComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       'name' : ['Will',
-                [Validators.required] ],
+                [Validators.required, Validators.minLength(3)]
+               ],
       'email': ['will.huang@miniasp.com',
                 [Validators.required]
-      ]
+               ]
     });
   }
 
