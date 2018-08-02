@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -18,9 +19,11 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'];
   }
 
-  doLogin() {
+  doLogin(user: NgModel, pass: NgModel) {
+    user.control.disable();
+    pass.control.disable();
     localStorage.setItem('LoginToken', '123');
-    this.router.navigateByUrl(this.returnUrl);
+    // this.router.navigateByUrl(this.returnUrl);
   }
 
 }
