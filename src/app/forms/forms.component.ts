@@ -1,5 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormArray } from 'node_modules/@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray, AbstractControl } from 'node_modules/@angular/forms';
+
+function blacklistValidator(control: AbstractControl) {
+  const val: string = control.value;
+  if (val.indexOf('Will') >= 0) {
+    return {'blacklist': '您使用了黑名單上面的文字'};
+  } else {
+    return null;
+  }
+}
+
 
 @Component({
   selector: 'app-forms',
@@ -22,21 +32,23 @@ export class FormsComponent implements OnInit {
                ],
       'todos': this.fb.array([
           this.fb.group({
-            'title' : ['', [Validators.required]],
+            'title' : ['', [Validators.required, blacklistValidator]],
             'isDone': false
           }),
           this.fb.group({
-            'title' : ['', [Validators.required]],
+            'title' : ['', [Validators.required, blacklistValidator]],
             'isDone': false
           })
       ])
     });
+
   }
 
   btnAdd() {
-    let todos = this.form.get('todos') as FormArray;
+
+    const todos = this.form.get('todos') as FormArray;
     todos.push(this.fb.group({
-      'title' : ['', [Validators.required]],
+      'title' : ['', [Validators.required, blacklistValidator]],
       'isDone': false
     }));
   }
